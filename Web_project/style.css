@@ -27,3 +27,15 @@ body{
 .space{
     height: 1000px;
 }
+
+.box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.post-box{
+    background: var(--bg-color);
+    box-shadow: 0 4px 14px hs1(355deg 25% 15% / 10%);
+}
