@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.background{
+    width: 100%;
+    height: 100vh;
+    background-image: url('vector-JUL-2021-67.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.navigator{
+    width: 100%;
+    margin: auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(116, 116, 116, 0.556);
+    position: sticky;
+}
+
+#logo{
+    
+    width: 10px;
+    cursor: pointer;
+    margin-left: 220px;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: gainsboro;
+
+}
+
+.navigator ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 180px;
+}
+
+
+.navigator ul li{
+    
+    list-style-type: none;
+    margin-right: 50x;
+    align-items: space-evenly;
+    padding-right: 60px;
+}
+
+.navigator a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.testo ul{
+    border: 3px dotted green;
+    list-style-type: none;
+    display: block;
+    justify-content: space-between;
+}
+
+.banner{
+    display: flex;
+    width: 100%;
+    height: 360px;
+    background-color: black;
+    grid-gap: 30px;
+    justify-content: space-evenly;
+}
+.banner img{
+    width: 120px;
+    height: 160px
+}
