@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TicketSell</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="header.css">
     </head>
 
     <body>
 
         <div class="navigator">
                 <div id="logo">
-                    <b>TicketSell</b>
+                    <a href="homepage.php">TicketSell</a>
                 </div>
                 <div id="nav_btns">
                  <ul>

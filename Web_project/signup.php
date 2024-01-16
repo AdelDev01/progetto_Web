@@ -11,14 +11,10 @@
 </head>
 
 <body>
-<?php require_once 'header.php'?>
-
-    <div>
+    <?php require_once 'header.php'?>
         <h1 id="titolo_registrazione">REGISTRAZIONE</h1>
-
         <p>Inserire email, username e password: </p>
         <form action="file php per la registrazione" method="post">
-
             <div id="form_registrazione">
                 <input type="email" name="email" placeholder="Inserisci la tua email"></input>
                 <br><br>
@@ -29,9 +25,8 @@
                 <input type="password" name="pwdrepeat" placeholder="Ripeti la tua password"> </input>
                 <br><br>
                 <button type="submit" name="submit">Registrati</button>
-            </div>
+                </div>
         </form>
-    </div>
-
 </body>
+
 </html>
