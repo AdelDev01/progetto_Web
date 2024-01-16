@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background">
         <!-- navigator messo nel file header.php -->
         <?php require_once 'header.php'; ?>
         <div class="banner">
@@ -26,6 +25,7 @@
             <img src="https://w7.pngwing.com/pngs/186/294/png-transparent-banana-a-banana-food-banana-leaves-cartoon-thumbnail.png" alt="">
 
         </div>
-    </div>
+
+        <div class="space"></div>
 </body>
 </html>
