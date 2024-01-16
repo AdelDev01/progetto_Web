@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-<?php include_once 'header.php'?>
+<?php require_once 'header.php'?>
 
     <div>
         <h1 id="titolo_registrazione">REGISTRAZIONE</h1>
