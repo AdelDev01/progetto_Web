@@ -1,14 +1,13 @@
 <?php
 $servername = "localhost:3306";
-$username = "root";
-$password = "";
+$dBUsername = "root";
+$dBPassword = "";
+$dBName = "progettoweb_mobile";
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=progettoweb_mobile", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
+//creazione connessione
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+
+//Messaggio di errore se fallisce la connessione
+if (!$conn){
+    die("Connessione fallita: " . mysqli_connect_error());
 }
-?>
