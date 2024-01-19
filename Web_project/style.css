@@ -2,9 +2,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background-image: url('vector-JUL-2021-67.jpg');
+    background-image: url('img/vector-JUL-2021-67.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -22,16 +22,69 @@ body {
 }
 
 .highlight-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Utilizza una griglia flessibile */
-    gap: 10px; /* Spazio tra le immagini */
-    max-width: 1200px; /* Imposta una larghezza massima per la griglia */
-    width: 100%; /* Occupa l'intera larghezza della sezione */
-    border: solid red;
+    position:flex;
+    width: calc(250px - 30px);
+    height: calc(300px - 30px);
+    background: #000;
+    float: left;
+    margin: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .highlight-images img {
-    max-width: 100%;
-    height: auto;
-    width: 100%; /* Riempi l'intera larghezza della cella della griglia */
+    position:flex;
+    width: calc(400px - 30px);
+    height: calc(300px - 30px);
+    background: #000;
+    float: left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+
+.container{
+    position: flex;
+    width: 1200px;
+    height: 300px;
+    margin: 100px auto;
+}
+
+.container .box{
+    position: relative;
+    width: calc(400px - 30px);
+    height: calc(300px - 30px);
+    background: #000;
+    float: left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+.container .box .image{
+    position: relative;
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: red;
+    transition: 0.5s;
+    z-index: 1;
+}
+.container .box .image img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.container .box:hover .image{
+    opacity: 0.5;
+    background: #3f3c3c;
 }
