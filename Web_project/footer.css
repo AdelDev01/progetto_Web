@@ -3,4 +3,5 @@ footer{
     background-color: rgb(46, 42, 42);
     color: whitesmoke;
     padding: 30px;
+    bottom: 0;
 }
