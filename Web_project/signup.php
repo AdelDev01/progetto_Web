@@ -11,6 +11,7 @@
 
 <body>
     <?php require_once 'header.php'?>
+    <div class="container-sign-up">
         <h1 id="titolo_registrazione">REGISTRAZIONE</h1>
         <p>Inserire email, username e password: </p>
         <form action="./includes/signup.inc.php" method="post">
@@ -54,6 +55,8 @@
                 
             }
         ?>
+    </div>
+    <?php require_once 'footer.php'?>
 
 </body>
 
