@@ -108,7 +108,17 @@
 
 
 
+    <?php
+        if (isset($_GET['error'])) {
+            if($_GET['error'] == 'notlogged'){
+                echo "<p>Non hai effettuato l'accesso!</p>";
+            }
+            if($_GET['error'] == 'alreadylogged'){
+                echo "<p>Hai già effettuato l'accesso!</p>";
+            }
+        }
 
+    require_once 'footer.php'; ?>
 
 </body>
 </html>
