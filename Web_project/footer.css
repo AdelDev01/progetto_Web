@@ -1,0 +1,23 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(116, 116, 116, 0.556);
+    color: purple;
+    padding: 20px;
+}
+
+.footer-links {
+    display: flex;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: purple;
+    margin-right: 20px;
+}
+
+.nome_sito {
+    text-align: right;
+    flex-grow: 1;
+}
