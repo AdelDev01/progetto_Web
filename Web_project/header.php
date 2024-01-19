@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -15,15 +17,17 @@
                 </div>
                 <div id="nav_btns">
                  <ul>
-                     <li>
-                         <a href="login.php">Login</a>
-                     </li>
-                     <li>
-                         <a href="signup.php">Sign Up</a>
-                     </li>
-                     <li>
-                         <a href="">Contact</a>
-                     </li>
+                 <?php
+                    if (isset($_SESSION['username'])){
+                        // echo '<li><a class="link_nav-bar" href="../img/impostazioni.php">IMPOSTAZIONI ACCOUNT</a></li>';
+                        echo '<li><a class="link_nav-bar" href="./profilo.php" >PROFILO</a></li>';
+                        echo '<li><a class="link_nav-bar" href="./includes/logout.inc.php">LOGOUT</a></li>';
+                    }
+                    else{
+                        echo '<li><a class="link_nav-bar" href="./login.php">LOGIN</a></li>';
+                        echo '<li><a class="link_nav-bar" href="./signup.php">REGISTRAZIONE</a></li>';
+                    }
+                ?>
                  </ul>
                 </div>
             </div>
