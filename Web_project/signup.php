@@ -52,7 +52,6 @@
                 if($_GET['error'] == 'none'){
                     echo '<p>Registrazione effettuata con successo!</p>';
                 }
-                
             }
         ?>
     </div>
