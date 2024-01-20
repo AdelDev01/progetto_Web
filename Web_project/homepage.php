@@ -11,6 +11,7 @@
 
     <section class="highlights">
         <div class="highlight-images">
+            <a href=""></a>
 
         </div>
         <div class="highlight-images">

@@ -10,35 +10,36 @@ body {
     background-attachment: fixed;
 }
 
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 .highlights {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
     min-height: 300px;
     background-color: rgba(255, 255, 255, 0.8);
-    overflow: hidden;
 }
 
 .highlight-images {
-    display:flex;
-    width: calc(250px - 30px);
+    flex: 0 0 calc(250px - 30px);
     height: calc(300px - 30px);
     background: #000;
-    float: left;
-    margin: 4px;
     box-sizing: border-box;
     overflow: hidden;
     border-radius: 10px;
+    animation: slideAnimation 10s linear infinite;
 }
 
 .highlight-images img {
-    display:flex;
     width: calc(400px - 30px);
     height: calc(300px - 30px);
-    background: #000;
-    float: left;
-    margin: 15px;
     box-sizing: border-box;
     overflow: hidden;
     border-radius: 10px;
@@ -59,11 +60,11 @@ body {
     background: #000;
     float: left;
     margin: 15px;
+    margin-bottom: 50px;
     box-sizing: border-box;
     overflow: hidden;
     border-radius: 10px;
     transition: 0.5s;
-
 }
 
 .container .box .image{
@@ -78,6 +79,7 @@ body {
     z-index: 1;
 }
 .titolo, .sottotitolo {
+    z-index: 1;
     text-align: center;
     padding: 10px;
     color: whitesmoke;
