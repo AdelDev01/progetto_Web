@@ -1,3 +1,7 @@
+<?php 
+require_once './connection.php'; 
+require_once './includes/functions.inc.php';
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -42,12 +46,27 @@
         </div>
     </section>
     <div class="container">
-        <div class="box">
-            <div class="image">
-                <img src="img/image1.jpg" alt="" class="imag">
 
-            </div>
+        <?php
+        $eventData = getEventInfo($conn, 1); 
+        $eventTitle = $eventData['nome_evento'];
+        $eventDatatime = $eventData['data_evento'];
+        $eventImg = $eventData['url_foto'];
+        ?>
+        <div class="box">
+            <a href="evento.php?eventID=<?php echo $eventData['id_evento']; ?>">
+                <div class="image">
+                    <img src="<?php echo "$eventImg" ?>" alt="" class="imag">
+                </div>
+                <div class="title">
+                    <p><?php echo "$eventTitle" ?></p>
+                </div>
+                <div class="datetime">
+                <p><?php echo "$eventDatatime"?></p>
+                </div>
+            </a>
         </div>
+
         <div class="box">
             <div class="image">
                 <img src="img/image2.jpg" alt="" class="imag">
