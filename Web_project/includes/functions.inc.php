@@ -165,3 +165,22 @@ function getUserInfo($conn, $username) {
         return null;
     }
 }
+
+function getEventInfo($conn, int $eventID) {
+    // Esegui la query per ottenere le informazioni del campo dal database
+    $sql = "SELECT id_evento, nome_evento, data_evento, info_evento, prenotazioni_totali, url_foto FROM evento WHERE id_evento = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../homepage.php?error=stmtfailed");
+        exit(); 
+    }
+    mysqli_stmt_bind_param($stmt, "i", $eventID); 
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    // Ottieni il risultato della query
+    if ($row = mysqli_fetch_assoc($result)) {
+        return $row;
+    } else {
+        return null;
+    }
+}
