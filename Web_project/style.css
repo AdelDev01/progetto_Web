@@ -120,9 +120,6 @@ body {
 .container .box:hover .datetime {
     opacity: 1;
 }
-.container .box:hover{
-    transform: scale(1.1);
-}
 
 .container .box:hover{
     transform: scale(1.1);
