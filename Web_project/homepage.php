@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-
-    <!-- navigator messo nel file header.php -->
     <?php require_once 'header.php'; ?>
-    </header>
+
     <section class="highlights">
         <div class="highlight-images">
 
@@ -40,12 +37,17 @@
         <div class="highlight-images">
 
         </div>
-    </section>
+   </section>
     <div class="container">
         <div class="box">
             <div class="image">
                 <img src="img/image1.jpg" alt="" class="imag">
 
+            </div>
+            <div class="titolo">
+                <p>
+                    nome uno
+                </p>
             </div>
         </div>
         <div class="box">

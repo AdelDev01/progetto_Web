@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
+    <div class="push"></div>
     <footer>
         <div class="footer-content">
             <div class="footer-links">
