@@ -50,6 +50,22 @@ require_once './includes/functions.inc.php';
             <a href=""><img src="img/image9.jpg" alt="" class="imag"></a>
 
         </div>
+        <div class="highlight-images">
+            <a href=""><img src="img/image1.jpg" alt="" class="imag"></a>
+
+        </div>
+        <div class="highlight-images">
+            <a href=""><img src="img/image2.jpg" alt="" class="imag"></a>
+
+        </div>
+        <div class="highlight-images">
+            <a href=""><img src="img/image3.jpg" alt="" class="imag"></a>
+
+        </div>
+        <div class="highlight-images">
+            <a href=""><img src="img/image4.jpg" alt="" class="imag"></a>
+
+        </div>
    </section>
     <div class="container">
 

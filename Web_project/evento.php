@@ -3,7 +3,6 @@ include_once './header.php';
 require_once './connection.php';
 require_once './includes/functions.inc.php';
 $eventID = $_GET["eventID"];
-session_start();
 $eventData = getEventInfo($conn, $eventID);
 ?>
 
@@ -14,28 +13,30 @@ $eventData = getEventInfo($conn, $eventID);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $eventData["nome_evento"]; ?></title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="style.css">
         
     </head>
 
     <body>
-        <div id="titolo_evento">
-            <h1><?php echo $eventData["nome_evento"]; ?></h1>
-        </div>
+        <div class="container-evento">
+            <div id="locandina_evento">
+                <img src="<?php echo $eventData["url_foto"]?>">
+            </div>
+            <div id="titolo_evento">
+                <h1><?php echo $eventData["nome_evento"]; ?></h1>
+            </div>
 
-        <div id="descrizione_evento">
-            <p><?php echo $eventData["info_evento"]; ?></p>
-        </div>
+            <div id="descrizione_evento">
+                <p><?php echo $eventData["info_evento"]; ?></p>
+            </div>
 
-        <div id="data_evento">
-            <p><?php echo $eventData["data_evento"]; ?></p>
+            <div id="data_evento">
+                <p><?php echo $eventData["data_evento"]; ?></p>
+            </div>
+            <div class="button">
+                    <button>Prenotati per l'evento</button>
+            </div>
         </div>
-
-        <div id="locandina_evento">
-            <img src="<?php echo $eventData["url_foto"]?>">
-        </div>
-            
-    </body>
 </html>
 
 <?php
