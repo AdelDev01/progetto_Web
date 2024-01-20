@@ -11,31 +11,39 @@
 
     <section class="highlights">
         <div class="highlight-images">
-            <a href=""></a>
+            <a href=""><img src="img/image1.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image2.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image3.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image4.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image5.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image6.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image7.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image8.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image9.jpg" alt="" class="imag"></a>
 
         </div>
    </section>
