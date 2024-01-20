@@ -89,6 +89,29 @@ body {
     background: #3f3c3c;
 }
 
+.container .box .title,
+.container .box .datetime {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    color: white; 
+    text-align: center;
+    z-index: 2;
+}
+
+.container .box .title {
+    top: 10%;
+}
+
+.container .box .datetime {
+    bottom: 10%;
+}
+
+.container .box:hover .title,
+.container .box:hover .datetime {
+    opacity: 1;
+}
+
 .container-login,.container-sign-up {
     max-width: 600px; /* Imposta la larghezza massima del container login */
     width: 100%;
