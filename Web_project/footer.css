@@ -1,10 +1,11 @@
 footer{
-    position: relative;
     width: 100%;
     text-align: center;
     background-color: rgb(114, 110, 110);
     color: whitesmoke;
-    margin-top: 100vh;
-    padding: 20px;
+    margin-top: 30%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: flex;
     bottom: 0;
 }

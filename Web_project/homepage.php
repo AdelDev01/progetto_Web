@@ -11,40 +11,46 @@ require_once './includes/functions.inc.php';
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-
-    <!-- navigator messo nel file header.php -->
     <?php require_once 'header.php'; ?>
-    </header>
+
     <section class="highlights">
         <div class="highlight-images">
+            <a href=""><img src="img/image1.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image2.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image3.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image4.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image5.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image6.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image7.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image8.jpg" alt="" class="imag"></a>
 
         </div>
         <div class="highlight-images">
+            <a href=""><img src="img/image9.jpg" alt="" class="imag"></a>
 
         </div>
-    </section>
+   </section>
     <div class="container">
 
         <?php
@@ -65,6 +71,15 @@ require_once './includes/functions.inc.php';
                 <p><?php echo "$eventDatatime"?></p>
                 </div>
             </a>
+            <div class="image">
+                <img src="img/image1.jpg" alt="" class="imag">
+
+            </div>
+            <div class="titolo">
+                <p>
+                    nome uno
+                </p>
+            </div>
         </div>
 
         <div class="box">
