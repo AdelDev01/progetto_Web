@@ -5,17 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./login_signup.css">
-
+    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="login-signup.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <?php require_once 'header.php'?>
     <div class="container-sign-up">
-        <h1 id="titolo_registrazione">REGISTRAZIONE</h1>
-        <p>Inserire email, username e password: </p>
-        <form action="./includes/signup.inc.php" method="post">
+        <div id="div_registrazione">
+            <h1 id="titolo_registrazione">REGISTRAZIONE</h1>
+        </div>
+
+            <form action="./includes/signup.inc.php" method="post">
             <div id="form_registrazione">
                 <input type="email" name="email" placeholder="Inserisci la tua email"></input>
                 <br><br>

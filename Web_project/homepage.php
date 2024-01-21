@@ -67,6 +67,8 @@ require_once './includes/functions.inc.php';
 
         </div>
    </section>
+   <div class="divisor">
+   </div>
    <!-- Ogni box equivale a un evento -->
    <div class="container">
         <?php //ottengo l'ordine degli eventi dal DB

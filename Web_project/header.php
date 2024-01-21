@@ -9,13 +9,18 @@ if (session_status() == PHP_SESSION_NONE) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="header.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     </head>
 
     <body>
 
         <div class="navigator">
-                <div id="logo">
-                    <a href="homepage.php">TicketSell</a>
+                <div class="logo">
+                    <a href="homepage.php" id="logo">TicketSell</a>
                 </div>
                 <div id="nav_btns">
                  <ul>
@@ -26,8 +31,8 @@ if (session_status() == PHP_SESSION_NONE) {
                         echo '<li><a class="link_nav-bar" href="./includes/logout.inc.php">LOGOUT</a></li>';
                     }
                     else{
-                        echo '<li><a class="link_nav-bar" href="./login.php">LOGIN</a></li>';
-                        echo '<li><a class="link_nav-bar" href="./signup.php">REGISTRAZIONE</a></li>';
+                        echo '<li><a class="link_nav-bar" href="./login.php"><i class="fa-solid fa-right-to-bracket"></i>  LOGIN</a></li>';
+                        echo '<li><a class="link_nav-bar" href="./signup.php"><i class="fa-solid fa-user-plus"></i>  REGISTRAZIONE</a></li>';
                     }
                 ?>
                  </ul>

@@ -13,15 +13,19 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="login_signup.css">
+        <link rel="stylesheet" href="login-signup.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
     </head>
     <body>
 
         <?php require_once 'header.php'?>
-        <div class="container-login"></div>
+        <div class="container-login">
             <div id="div_login">
+                <i class="fa-regular fa-user"></i>
                 <h1 id="titolo_login">LOGIN</h1>
-                <p>Inserire nome utente e password: </p>
             </div>
 
             <form action="includes/login.inc.php" method="post">
@@ -54,7 +58,9 @@ session_start();
                     }
                 }
             ?>
+
         </div>
+
         <?php require_once 'footer.php'?>
 
     </body>
