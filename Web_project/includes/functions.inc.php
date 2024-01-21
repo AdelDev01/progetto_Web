@@ -184,3 +184,28 @@ function getEventInfo($conn, int $eventID) {
         return null;
     }
 }
+
+function getEventInfoOrdered($conn, $order = 'ASC') {
+    try {
+        // ottengo la data attuale per evitare di dare eventi passati
+        $currentDate = date('Y-m-d H:i:s');
+
+        // eseguo la query per ottenere gli eventi ordinati per data senza prendere quelli passati
+        $sql = "SELECT * FROM evento WHERE data_evento > '$currentDate' ORDER BY data_evento $order";
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result) {
+            throw new Exception("Errore nella query: " . mysqli_error($conn));
+        }
+
+        $eventi = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $eventi[] = $row;
+        }
+
+        return $eventi;
+    } catch (Exception $e) {
+        echo "Errore: " . $e->getMessage();
+        return array();
+    }
+}
