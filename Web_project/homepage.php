@@ -67,98 +67,26 @@ require_once './includes/functions.inc.php';
 
         </div>
    </section>
-    <div class="container">
-
-        <?php
-        $eventData = getEventInfo($conn, 1); 
-        $eventTitle = $eventData['nome_evento'];
-        $eventDatatime = $eventData['data_evento'];
-        $eventImg = $eventData['url_foto'];
-        ?>
-        <div class="box">
-            <a href="evento.php?eventID=<?php echo $eventData['id_evento']; ?>">
-                <div class="image">
-                    <img src="<?php echo "$eventImg" ?>" alt="" class="imag">
-                </div>
-                <div class="title">
-                    <p><?php echo "$eventTitle" ?></p>
-                </div>
-                <div class="datetime">
-                <p><?php echo "$eventDatatime"?></p>
-                </div>
-            </a>
-            <div class="image">
-                <img src="img/image1.jpg" alt="" class="imag">
-
+   <!-- Ogni box equivale a un evento -->
+   <div class="container">
+        <?php //ottengo l'ordine degli eventi dal DB
+        $eventi = getEventInfoOrdered($conn, 'ASC');
+        foreach ($eventi as $evento) : ?>
+            <div class="box">
+                <a href="evento.php?eventID=<?php echo $evento['id_evento']; ?>">
+                    <div class="image">
+                        <img src="<?php echo $evento['url_foto']; ?>" alt="" class="imag">
+                    </div>
+                    <div class="title">
+                        <p><?php echo $evento['nome_evento']; ?></p>
+                    </div>
+                    <div class="datetime">
+                        <p><?php echo $evento['data_evento']; ?></p>
+                    </div>
+                </a>
             </div>
-            <div class="titolo">
-                <p>
-                    nome uno
-                </p>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="img/image2.jpg" alt="" class="imag">
-                
-                </div>
-        </div>
-        <div class="box">
-            <div class="image">
-                <img src="img/image3.jpg" alt="" class="imag">
-                
-                </div>
-        </div>
-        <div class="box">
-            
-            <div class="image">
-                <img src="img/image4.jpg" alt="" class="imag">
-            </div>
-            <div class="info">
-                <h3>Nome film</h3>
-                <p>infoinfoinfoinfoinfoinfoinfoinfoninfoinfoinfoinfoinfoinfo</p>
-            </div>
-        </div>
-        <div class="box">
-            <div class="image">
-                <img src="img/image5.jpg" alt="" class="imag">
-                
-                </div>
-
-        </div>
-        <div class="box">
-            <div class="image">
-                <img src="img/image6.jpg" alt="" class="imag">
-                
-            </div>
-        
-        </div>
-        <div class="box">
-            <div class="image">
-                <img src="img/image7.jpg" alt="" class="imag">
-                
-            </div>
-        </div>
-        <div class="box">
-            <div class="image">
-                <img src="img/image8.jpg" alt="" class="imag">
-                
-            </div>
-
-        </div>
-        <div class="box">
-            <div class="image">
-                <img src="img/image9.jpg" alt="" class="imag">
-
-            </div>
-                
-        </div>
+        <?php endforeach; ?>
     </div>
-
-    
-
-
 
     <?php
         if (isset($_GET['error'])) {
