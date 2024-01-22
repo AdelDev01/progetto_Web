@@ -40,12 +40,11 @@ session_start();
                         <button type="submit" name="submit">Accedi</button>
                     </div>
 
-                    <div id="registrati_ora">
-                        <p style='display: inline'>Non sei ancora registrato?</p>
-                        <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
-                    </div>
-                </form>
-            </div>
+                <div id="registrati_ora">
+                    <p style='display: inline'>Non sei ancora registrato?</p>
+                    <a href="./registration.php">Registrati ora</a>
+                </div>
+            </form>
             
             <!-- Gestione errori php -->
             <div id="messaggi_errori_login">
