@@ -13,6 +13,7 @@ require_once './includes/functions.inc.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <?php require_once 'header.php'; ?>
@@ -87,7 +88,7 @@ require_once './includes/functions.inc.php';
                         <img src="<?php echo $evento['url_foto']; ?>" alt="" class="imag">
                     </div>
                     <div class="title">
-                        <p><?php echo $evento['nome_evento']; ?></p>
+                        <p class="event-name"><?php echo $evento['nome_evento']; ?></p>
                     </div>
                     <div class="datetime">
                         <p><?php echo $evento['data_evento']; ?></p>

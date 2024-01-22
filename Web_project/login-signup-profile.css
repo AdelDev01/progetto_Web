@@ -14,7 +14,7 @@ body{
 }
 
 .box{
-    background-color: #d1d1d1c9;
+    background-color: rgba(255, 255, 255, 0.533);
     margin-left: 32%;
     margin-right: 32%;
     margin-top: 50px;
