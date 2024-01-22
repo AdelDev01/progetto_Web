@@ -44,24 +44,24 @@ session_start();
                     <p style='display: inline'>Non sei ancora registrato?</p>
                     <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
                 </div>
-            </form>
-            
-            <!-- Gestione errori php -->
-            <div id="messaggi_errori_login">
-            <?php
-                if (isset($_GET['error'])) {
-                    if($_GET['error'] == 'emptyinput'){
-                        echo '<p>Riempi tutti i campi!</p>';
+                </form>
+                
+                <!-- Gestione errori php -->
+                <div id="messaggi_errori_login">
+                <?php
+                    if (isset($_GET['error'])) {
+                        if($_GET['error'] == 'emptyinput'){
+                            echo '<p>Riempi tutti i campi!</p>';
+                        }
+                        if($_GET['error'] == 'wronglogin'){
+                            echo '<p>Utente non esistente!</p>';
+                        }
+                        if($_GET['error'] == 'incorrectpassword'){
+                            echo '<p>La mail o la password non è corretta!</p>';
+                        }
                     }
-                    if($_GET['error'] == 'wronglogin'){
-                        echo '<p>Utente non esistente!</p>';
-                    }
-                    if($_GET['error'] == 'incorrectpassword'){
-                        echo '<p>La mail o la password non è corretta!</p>';
-                    }
-                }
-            ?>
-
+                ?>
+            </div>
         </div>
 
         <?php require_once 'footer.php'?>
