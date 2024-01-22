@@ -39,7 +39,7 @@ session_start();
 
                 <div id="registrati_ora">
                     <p style='display: inline'>Non sei ancora registrato?</p>
-                    <a href="./registration.php">Registrati ora</a>
+                    <a href="./signup.php">Registrati ora</a>
                 </div>
             </form>
             
