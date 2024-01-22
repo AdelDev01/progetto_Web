@@ -20,8 +20,8 @@
     font-size: 40px;
     font-family: 'Moirai One', system-ui;
     background-color: transparent;
-    color: rgb(221, 221, 221);
-    transition: 0.9s;
+    color: rgb(209, 209, 209);
+    transition: 0.7s;
 }
 .logo #logo:hover{
     color: white;
