@@ -9,6 +9,10 @@ require_once './includes/functions.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicketSell</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,500&display=swap" rel="stylesheet">
 </head>
 <body>
     <?php require_once 'header.php'; ?>
@@ -68,6 +72,9 @@ require_once './includes/functions.inc.php';
         </div>
    </section>
    <div class="divisor">
+   </div>
+   <div class="event-title-dashboard">
+        <p>DI TENDENZA IN QUESTO MOMENTO</p>
    </div>
    <!-- Ogni box equivale a un evento -->
    <div class="container">

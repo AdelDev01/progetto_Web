@@ -13,6 +13,7 @@
 }
 
 .logo #logo{
+    font-weight: bold;
     width: 10px;
     cursor: pointer;
     margin-left: 220px;
@@ -20,16 +21,10 @@
     font-family: 'Moirai One', system-ui;
     background-color: transparent;
     color: rgb(221, 221, 221);
-    transition: 0.6s;
+    transition: 0.9s;
 }
 .logo #logo:hover{
-    width: 10px;
-    cursor: pointer;
-    margin-left: 220px;
-    font-size: 40px;
-    font-family: 'Moirai One', system-ui;
-    background-color: transparent;
-    color: rgb(255, 255, 255);
+    color: white;
 }
 
 .navigator ul {
@@ -75,7 +70,6 @@
 }
 
 .testo ul{
-    border: 3px dotted green;
     list-style-type: none;
     display: block;
     justify-content: space-between;

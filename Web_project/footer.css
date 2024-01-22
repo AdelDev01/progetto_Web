@@ -1,11 +1,30 @@
 footer{
     width: 100%;
-    text-align: center;
-    background-color: rgb(114, 110, 110);
+    background-color: #161A30;
     color: whitesmoke;
-    margin-top: 30%;
+    margin-top: 20%;
     padding-top: 20px;
     padding-bottom: 20px;
     position: flex;
     bottom: 0;
+    text-align: center;
+}
+
+.fa-brands.fa-github{
+    font-size: 40px;
+    color: white;
+    padding-bottom: 10px;
+    transition: 0.2s;
+}
+
+.fa-brands.fa-github:hover{
+    color: #b5b5b5;
+}
+
+.footer-links p{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.data-sito{
+font-family: 'Roboto', sans-serif;
 }

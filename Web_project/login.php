@@ -13,35 +13,39 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="login-signup.css">
+        <link rel="stylesheet" href="login-signup-profile.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
     </head>
     <body>
 
         <?php require_once 'header.php'?>
         <div class="container-login">
-            <div id="div_login">
-                <i class="fa-regular fa-user"></i>
-                <h1 id="titolo_login">LOGIN</h1>
+            <div class="box">
+                <div id="div_login">
+                    <i class="fa-regular fa-user"></i>
+                    <h1 id="titolo_login">LOGIN</h1>
+                </div>
+            
+
+                <form action="includes/login.inc.php" method="post">
+                    <div id="form_login">
+                        <input type="text" name="username" placeholder="Inserisci username o email">
+                        <br><br>
+                        <input type="password" name="password" placeholder="Inserisci la tua password">
+                        <br><br>
+                        <button type="submit" name="submit">Accedi</button>
+                    </div>
+
+                    <div id="registrati_ora">
+                        <p style='display: inline'>Non sei ancora registrato?</p>
+                        <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
+                    </div>
+                </form>
             </div>
-
-            <form action="includes/login.inc.php" method="post">
-                <div id="form_login">
-                    <input type="text" name="username" placeholder="Inserisci username o email">
-                    <br><br>
-                    <input type="password" name="password" placeholder="Inserisci la tua password">
-                    <br><br>
-                    <button type="submit" name="submit">Accedi</button>
-                </div>
-
-                <div id="registrati_ora">
-                    <p style='display: inline'>Non sei ancora registrato?</p>
-                    <a href="./registration.php">Registrati ora</a>
-                </div>
-            </form>
             
             <!-- Gestione errori php -->
             <div id="messaggi_errori_login">
