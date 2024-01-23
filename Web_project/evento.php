@@ -44,11 +44,25 @@ $eventData = getEventInfo($conn, $eventID);
                         <p><?php echo $eventData["data_evento"]; ?></p>
                     </div>
                     <div class="button">
-                            <button>Prenotati per l'evento</button>
+                            <button id="button-reserve">Prenotati per l'evento</button>
                     </div>
                 </div>
             </div>
         </div>
+    <script>
+    var prenotazioneButton = document.getElementById('button-reserve');
+
+    prenotazioneButton.addEventListener('click', function()
+    {if (this.innerHTML === 'Prenotati per l\'evento') {
+            this.innerHTML = 'Prenotazione effettuata!';
+        }
+        else
+        {
+            this.innerHTML = 'Prenotati per l\'evento';
+        }
+        });     
+    </script>
+    </body>
 </html>
 
 <?php

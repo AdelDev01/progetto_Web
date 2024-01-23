@@ -56,6 +56,7 @@ body{
 
 .informazioni_utente,#messaggi_errori,#messaggi_errori_login{
     font-family: 'Montserrat', sans-serif;
+    color: rgb(190, 15, 15);
 
 }
 .informazioni_utente h4{
