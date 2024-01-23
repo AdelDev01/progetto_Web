@@ -23,7 +23,7 @@
           document.getElementById("ajaxres").innerHTML = oReq.responseText;
           };
 
-      oReq.open("GET", "api(1).php/utenti/" + email, true); // Includi l'email nel percorso della richiesta GET
+      oReq.open("GET", "api.php/utenti/" + email, true); // Includi l'email nel percorso della richiesta GET
       oReq.send();
       }
 
@@ -35,7 +35,7 @@
 
         var oReq = new XMLHttpRequest();
         oReq.onload = function(){document.getElementById("ajaxres").innerHTML = oReq.responseText;};
-        oReq.open("put", "api(1).php/utenti/" + document.getElementById("oldemail").value, true);
+        oReq.open("put", "api.php/utenti/" + document.getElementById("oldemail").value, true);
         oReq.send(jsondata);
       }
 
@@ -47,14 +47,14 @@
 
         var oReq = new XMLHttpRequest();
         oReq.onload = function(){document.getElementById("ajaxres").innerHTML = oReq.responseText;};
-        oReq.open("post", "api(1).php/utenti/", true);
+        oReq.open("post", "api.php/utenti/", true);
         oReq.send(jsondata);
       }
 
       function emailDelete(){
         var oReq = new XMLHttpRequest();
         oReq.onload = function(){document.getElementById("ajaxres").innerHTML = oReq.responseText;};
-        oReq.open("delete", "api(1).php/utenti/" + document.getElementById("oldemail").value, true);
+        oReq.open("delete", "api.php/utenti/" + document.getElementById("oldemail").value, true);
         oReq.send();
       }
 
