@@ -78,9 +78,13 @@ require_once './includes/functions.inc.php';
    <div class="event-title-dashboard">
         <p>DI TENDENZA IN QUESTO MOMENTO</p>
    </div>
+
    <!-- Ogni box equivale a un evento -->
+
    <div class="container">
+    
         <?php //ottengo l'ordine degli eventi dal DB
+
         $eventi = getEventInfoOrdered($conn, 'ASC');
         foreach ($eventi as $evento) : ?>
             <div class="box">

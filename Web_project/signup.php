@@ -38,7 +38,8 @@
                 </form>
         </div>
 
-        <div id="messaggi_errori"> <!-- Gestione errori nella registrazione -->
+        <div id="messaggi_errori">
+            <!-- Gestione errori nella registrazione -->
         <?php
             if (isset($_GET['error'])) {
                 if($_GET['error'] == 'emptyinput'){

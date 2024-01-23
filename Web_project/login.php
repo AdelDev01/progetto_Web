@@ -47,6 +47,7 @@ session_start();
                 </form>
                 
                 <!-- Gestione errori php -->
+                
                 <div id="messaggi_errori_login">
                 <?php
                     if (isset($_GET['error'])) {

@@ -1,6 +1,7 @@
 <?php
 
-//IF per fare in modo che si possa accedere alla pagina solo tramite il pulsante in registration.php
+// IF per fare in modo che si possa accedere alla pagina solo tramite il pulsante in registration.php
+
 if(isset($_POST["submit"])){
     
     $username = $_POST["username"];

@@ -7,9 +7,9 @@ $eventData = getEventInfo($conn, $eventID);
 ?>
 
 <!DOCTYPE html>
+
 <html lang="it">
     <head>
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $eventData["nome_evento"]; ?></title>
@@ -24,6 +24,9 @@ $eventData = getEventInfo($conn, $eventID);
     </head>
 
     <body>
+
+        <!-- Creazione del box inclusi le informazioni dell'evento -->
+
         <div class="container-evento">
             <div class="box-evento">
                 <div id="locandina_evento">

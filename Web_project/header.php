@@ -26,7 +26,6 @@ if (session_status() == PHP_SESSION_NONE) {
                  <ul>
                  <?php
                     if (isset($_SESSION['username'])){
-                        // echo '<li><a class="link_nav-bar" href="../img/impostazioni.php">IMPOSTAZIONI ACCOUNT</a></li>';
                         echo '<li><a class="link_nav-bar" href="./profilo.php" >PROFILO</a></li>';
                         echo '<li><a class="link_nav-bar" href="./includes/logout.inc.php">LOGOUT</a></li>';
                     }
