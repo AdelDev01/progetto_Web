@@ -40,26 +40,7 @@ $eventData = getEventInfo($conn, $eventID);
                     }
                 });
             }
-
-            function bookTicket(eventID, userID) {
-                var oReq = new XMLHttpRequest();
-                oReq.onload = function() {
-                    document.getElementById("prenotazione").innerHTML = oReq.responseText;
-                    document.getElementById("prenotazione").style.marginLeft = "-40px";
-                    
-                };
-
-                oReq.open("POST", "api.php/prenotazioni/", true);
-                oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-                var data = {
-                    eventID: eventID,
-                    userID: userID
-                };
-
-                var jsondata = JSON.stringify(data);
-                oReq.send(jsondata);
-            }
+            
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
