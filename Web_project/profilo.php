@@ -16,6 +16,10 @@
     $data_creaz = $user["data_creazione_acc"];
     $uid = $user["UID"];
 
+    //query per ottenere gli eventi a cui si è prenotati
+    $bookedEvents = getUserBookings($conn, $uid);
+
+
 ?>
 
 
@@ -51,6 +55,42 @@
                 </div>
             </div>
         </div>
+        <div class="eventi_utente">
+            <h1 class="event-title-dashboard">I tuoi eventi</h1>
+            <div class="container">
+                <div class="box-container">
+                    <?php
+                    // Verifica se ci sono eventi prenotati
+                    if (!empty($bookedEvents)) {
+                        foreach ($bookedEvents as $booking) {
+                            // Chiamata alla funzione per ottenere informazioni sull'evento
+                            $eventInfo = getEventInfo($conn, $booking['id_evento_prenotato']);
+                            
+                            echo '<div class="box">';
+                                echo "<a href='evento.php?eventID=" . $eventInfo['id_evento'] . "'>";
+                                    echo '<div class="image">';
+                                        echo '<img src="' . $eventInfo['url_foto'] . '" alt="" class="imag">';
+                                    echo '</div>';
+                                    echo '<div class="title">';
+                                        echo '<p class="event-name">' . $eventInfo['nome_evento'] . '</p>';
+                                    echo '</div>';
+                                    echo '<div class="datetime">';
+                                        echo '<p>' . $eventInfo['data_evento'] . '</p>';
+                                    echo '</div>';
+                                echo '</a>';
+                            echo '</div>';
+
+                        }
+                    } else {
+                        // Nessun evento prenotato, mostra un messaggio
+                        echo '<div>Nessun evento prenotato.</div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+
     <?php include_once './footer.php'; ?>
 
     </body>
