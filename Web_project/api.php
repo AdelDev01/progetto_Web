@@ -39,7 +39,7 @@ function bookTicket($eventID, $userID) {
   global $link;
 
   // Verifica se l'utente ha già prenotato per l'evento
-  $checkSql = "SELECT * FROM prenotazioni WHERE id_utente = $userID AND id_evento = $eventID";
+  $checkSql = "SELECT * FROM prenotazioni WHERE id_utente_prenotato = $userID AND id_evento_prenotato = $eventID";
   $checkResult = mysqli_query($link, $checkSql);
 
   if (mysqli_num_rows($checkResult) > 0) {
@@ -47,7 +47,7 @@ function bookTicket($eventID, $userID) {
       echo "Utente già prenotato per questo evento";
   } else {
       // Esegue l'inserimento nella tabella prenotazioni
-      $insertSql = "INSERT INTO prenotazioni (id_evento, id_utente) VALUES ($eventID, $userID)";
+      $insertSql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
       $insertResult = mysqli_query($link, $insertSql);
 
       if ($insertResult) {
@@ -61,24 +61,23 @@ function bookTicket($eventID, $userID) {
 
 // create SQL based on HTTP method
 switch ($method) {
-case 'GET':
-  $sql = "select UID, username, email, data_creazione_acc from `$table`".($key?" WHERE username=\"$key\"":''); break;
-case 'PUT':
-  $sql = "update `$table` set $set where email=\"$key\""; break;
+  case 'GET':
+    $sql = "select UID, username, email, data_creazione_acc from `$table`".($key?" WHERE username=\"$key\"":''); break;
+  case 'PUT':
+    $sql = "update `$table` set $set where email=\"$key\""; break;
   case 'POST':
-      if ($table == 'prenotazioni') {
-          $eventID = isset($input['eventID']) ? (int)$input['eventID'] : 0;
-          $userID = isset($input['userID']) ? (int)$input['userID'] : 0;
-
-          if ($eventID > 0 && $userID > 0) {
-              bookTicket($eventID, $userID);
-          } else {
-              echo "Parametri non validi per la prenotazione";
-          }
-      } else {
-          $sql = "insert into `$table` set $set";
-      }
-      break;
+    if ($table == 'prenotazioni') {
+        $eventID = isset($input['eventID']) ? (int)$input['eventID'] : 0;
+        $userID = isset($input['userID']) ? (int)$input['userID'] : 0;
+        if ($eventID > 0 && $userID > 0) {
+            bookTicket($eventID, $userID);
+        } else {
+            echo "Parametri non validi per la prenotazione";
+        }
+    } else {
+        $sql = "insert into `$table` set $set";
+    }
+    break;
   case 'DELETE':
     $sql = "delete from `$table` where email=\"$key\""; break;
 }

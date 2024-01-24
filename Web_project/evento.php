@@ -42,7 +42,7 @@ $eventData = getEventInfo($conn, $eventID);
             function bookTicket(eventID, userID) {
                 var oReq = new XMLHttpRequest();
                 oReq.onload = function() {
-                    document.getElementById("ajaxres").innerHTML = oReq.responseText;
+                    document.getElementById("prenotazione").innerHTML = oReq.responseText;
                 };
 
                 oReq.open("POST", "api.php/prenotazioni/", true);
@@ -88,9 +88,16 @@ $eventData = getEventInfo($conn, $eventID);
                     <div id="data_evento">
                         <p><?php echo $eventData["data_evento"]; ?></p>
                     </div>
-                    <div class="button">
+                    <div class="button"> <!-- Il pulsante non permette la prenotazione qualora non si è prenotati -->
+                        <?php if (isset($_SESSION['username'])){ ?>
+    
                             <button id="prenotazione">Prenotati per l'evento</button>
                             <p id="ajaxres"></p>
+
+                        <?php } 
+                        else{ ?> 
+                            <p id="prenotazione">Accedi per prenotarti!</button>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
