@@ -32,24 +32,17 @@ session_start();
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        
         <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
-        <script src="./errors.js"></script>
+        <script src="./functions.js"></script>
 
+    
     </head>
     <body>
 
-        <?php require_once 'header.php';
-        // Apri il popup se ci sono messaggi di errore
-        if (!empty($errorMessage)) : ?>
-            <script>
-                // funzione per aprire il popup con il messaggio di errore
-                function openDialog() {
-                    var myDialog = document.getElementById('myDialog');
-                    myDialog.showModal();
-                }
-
-                window.onload = openDialog; // il popup spunta quando la pagina è caricata
-            </script>
+        <?php require_once 'header.php';// apre subito il popup se ci sono errori
+        if(!empty($errorMessage)) : ?>
+            <script> window.onload = openDialog; </script> 
         <?php endif; ?>
 
         <!-- Contenuto del popup -->
@@ -74,13 +67,12 @@ session_start();
                         <button type="submit" name="submit">Accedi</button>
                     </div>
 
-                <div id="registrati_ora">
-                    <p style='display: inline'>Non sei ancora registrato?</p>
-                    <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
-                </div>
+                    <div id="registrati_ora">
+                        <p style='display: inline'>Non sei ancora registrato?</p>
+                        <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
+                    </div>
                 </form>
-
-        </div>
+            </div>
 
         <?php require_once 'footer.php'?>
 
