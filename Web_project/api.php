@@ -35,7 +35,7 @@ if(isset($input)){
     $set.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
   }
 }
-function bookTicket($eventID, $userID) {
+function checkBooking($eventID, $userID) {
   global $link;
 
   // Verifica se l'utente ha già prenotato per l'evento
@@ -45,16 +45,9 @@ function bookTicket($eventID, $userID) {
   if (mysqli_num_rows($checkResult) > 0) {
       // L'utente ha già prenotato per questo evento
       echo "Utente già prenotato per questo evento";
+      return true;
   } else {
-      // Esegue l'inserimento nella tabella prenotazioni
-      $insertSql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
-      $insertResult = mysqli_query($link, $insertSql);
-
-      if ($insertResult) {
-          echo "Prenotazione effettuata con successo!";
-      } else {
-          echo "Errore durante la prenotazione";
-      }
+      return false;
   }
 }
 
@@ -66,13 +59,13 @@ switch ($method) {
   case 'PUT':
     $sql = "update `$table` set $set where email=\"$key\""; break;
   case 'POST':
-    if ($table == 'prenotazioni') {
+    if ($table == 'prenotazioni') { //casting di eventID e UID nel caso in cui non siano vuoti (quindi il passaggio è avvenuto correttamente)
         $eventID = isset($input['eventID']) ? (int)$input['eventID'] : 0;
         $userID = isset($input['userID']) ? (int)$input['userID'] : 0;
-        if ($eventID > 0 && $userID > 0) {
-            bookTicket($eventID, $userID);
-        } else {
-            echo "Parametri non validi per la prenotazione";
+        if ($eventID > 0 && $userID > 0 && !checkBooking($eventID, $userID)) {
+            //il passaggio è avvenuto correttamente e l'utente non è già prenotato per quell'evento
+            //quidni si esegue l'inserimento nella tabella prenotazioni
+              $sql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
         }
     } else {
         $sql = "insert into `$table` set $set";
@@ -99,9 +92,11 @@ if ($method == 'GET') {
     echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
   }
   if (!$key) echo ']';
-} elseif ($method == 'POST') {
-  //echo "INSERT ID: " . mysqli_insert_id($link);
-  echo "INSERT OK";
+} elseif ($method == 'POST' && $table == 'prenotazioni') {
+  echo "Prenotazione effettuata con successo!";
+}
+elseif ($method == 'POST') {
+    echo "INSERT OK";
 } else {
   echo "AFFECTED ROWS: " . mysqli_affected_rows($link);
 }
