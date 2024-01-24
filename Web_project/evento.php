@@ -21,6 +21,48 @@ $eventData = getEventInfo($conn, $eventID);
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         
+        <script>
+            window.onload = function(){
+                document.getElementById('prenotazione').addEventListener("click", function() {
+                    var eventID = <?php echo $eventID; ?>;
+                    var userID = <?php echo $_SESSION["UID"]; ?>;                    
+
+                    bookTicket(eventID, userID);
+                    
+                    if (this.innerHTML === 'Prenotati per l\'evento') {
+                        this.innerHTML = 'Prenotazione effettuata!';
+                    }
+                    else
+                    {
+                        this.innerHTML = 'Prenotati per l\'evento';
+                    }
+                });
+            }
+
+            function bookTicket(eventID, userID) {
+                var oReq = new XMLHttpRequest();
+                oReq.onload = function() {
+                    document.getElementById("ajaxres").innerHTML = oReq.responseText;
+                };
+
+                oReq.open("POST", "api.php/prenotazioni/", true);
+                oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                var data = {
+                    eventID: eventID,
+                    userID: userID
+                };
+
+                var jsondata = JSON.stringify(data);
+                oReq.send(jsondata);
+            }
+
+
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
     </head>
 
     <body>
@@ -47,24 +89,13 @@ $eventData = getEventInfo($conn, $eventID);
                         <p><?php echo $eventData["data_evento"]; ?></p>
                     </div>
                     <div class="button">
-                            <button id="button-reserve">Prenotati per l'evento</button>
+                            <button id="prenotazione">Prenotati per l'evento</button>
+                            <p id="ajaxres"></p>
                     </div>
                 </div>
             </div>
         </div>
-    <script>
-    var prenotazioneButton = document.getElementById('button-reserve');
-
-    prenotazioneButton.addEventListener('click', function()
-    {if (this.innerHTML === 'Prenotati per l\'evento') {
-            this.innerHTML = 'Prenotazione effettuata!';
-        }
-        else
-        {
-            this.innerHTML = 'Prenotati per l\'evento';
-        }
-        });     
-    </script>
+    
     </body>
 </html>
 
