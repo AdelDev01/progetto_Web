@@ -20,6 +20,7 @@ $eventData = getEventInfo($conn, $eventID);
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+        <script src="./functions.js"></script>
         
         <script>
             window.onload = function(){
@@ -38,25 +39,6 @@ $eventData = getEventInfo($conn, $eventID);
                     }
                 });
             }
-
-            function bookTicket(eventID, userID) {
-                var oReq = new XMLHttpRequest();
-                oReq.onload = function() {
-                    document.getElementById("prenotazione").innerHTML = oReq.responseText;
-                };
-
-                oReq.open("POST", "api.php/prenotazioni/", true);
-                oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-                var data = {
-                    eventID: eventID,
-                    userID: userID
-                };
-
-                var jsondata = JSON.stringify(data);
-                oReq.send(jsondata);
-            }
-
 
         </script>
 

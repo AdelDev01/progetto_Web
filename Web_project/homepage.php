@@ -30,7 +30,7 @@ if (isset($_GET['error'])) {
     <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
-    <script src="./errors.js"></script>
+    <script src="./functions.js"></script>
     
 </head>
 <body>
