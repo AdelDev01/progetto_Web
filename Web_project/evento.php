@@ -53,16 +53,16 @@ $eventData = getEventInfo($conn, $eventID);
             </div>
         </div>
     <script>
-    var prenotazioneButton = document.getElementById('button-reserve');
+        var prenotazioneButton = document.getElementById('button-reserve');
 
-    prenotazioneButton.addEventListener('click', function()
-    {if (this.innerHTML === 'Prenotati per l\'evento') {
+        prenotazioneButton.addEventListener('click', function()
+        {if (this.innerHTML === 'Prenotati per l\'evento') {
             this.innerHTML = 'Prenotazione effettuata!';
-        }
-        else
-        {
-            this.innerHTML = 'Prenotati per l\'evento';
-        }
+            }
+            else
+            {
+                this.innerHTML = 'Prenotati per l\'evento';
+            }
         });     
     </script>
     </body>
