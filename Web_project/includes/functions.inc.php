@@ -188,6 +188,23 @@ function getEventInfo($conn, int $eventID) {
     }
 }
 
+function getUserBookings($conn, int $uid) {
+    $sql = "SELECT id_evento_prenotato, id_prenotazione FROM prenotazioni WHERE id_utente_prenotato = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../homepage.php?error=stmtfailed");
+        exit(); 
+    }
+    mysqli_stmt_bind_param($stmt, "i", $uid); 
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $bookings = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $bookings[] = $row;
+    }
+    return $bookings;
+}
+
 function getEventInfoOrdered($conn, $order = 'ASC') {
     try {
         // Recupero la data attuale per evitare di dare eventi passati
