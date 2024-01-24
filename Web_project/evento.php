@@ -31,6 +31,7 @@ $eventData = getEventInfo($conn, $eventID);
                     
                     if (this.innerHTML === 'Prenotati per l\'evento') {
                         this.innerHTML = 'Prenotazione effettuata!';
+                        
                     }
                     else
                     {
@@ -43,6 +44,8 @@ $eventData = getEventInfo($conn, $eventID);
                 var oReq = new XMLHttpRequest();
                 oReq.onload = function() {
                     document.getElementById("prenotazione").innerHTML = oReq.responseText;
+                    document.getElementById("prenotazione").style.marginLeft = "-60px";
+                    
                 };
 
                 oReq.open("POST", "api.php/prenotazioni/", true);
@@ -56,8 +59,6 @@ $eventData = getEventInfo($conn, $eventID);
                 var jsondata = JSON.stringify(data);
                 oReq.send(jsondata);
             }
-
-
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -92,11 +93,11 @@ $eventData = getEventInfo($conn, $eventID);
                         <?php if (isset($_SESSION['username'])){ ?>
     
                             <button id="prenotazione">Prenotati per l'evento</button>
-                            <p id="ajaxres"></p>
-
                         <?php } 
-                        else{ ?> 
-                            <p id="prenotazione">Accedi per prenotarti!</button>
+                        else{ ?>
+                            <form action="./login.php">
+                                <button id="prenotazione">Accedi per prenotarti!</button>
+                            </form> 
                         <?php } ?>
                     </div>
                 </div>
