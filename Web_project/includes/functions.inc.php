@@ -121,7 +121,7 @@ function loginUser($conn, $username, $pwd){
     }
     else if ($checkPwd === true){
         session_start();
-        $_SESSION["uid"] = $userExists["uid"];
+        $_SESSION["UID"] = $userExists["UID"];
         $_SESSION["username"] = $userExists["username"];
         header("location: ../homepage.php");
         exit();
