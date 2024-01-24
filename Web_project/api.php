@@ -66,7 +66,7 @@ switch ($method) {
             //il passaggio è avvenuto correttamente e l'utente non è già prenotato per quell'evento
             //quidni si esegue l'inserimento nella tabella prenotazioni
               $sql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
-        }
+        }else return; //return perché qualora l'utente dovesse essere già prenotato $sql sarebbe vuoto.
     } else {
         $sql = "insert into `$table` set $set";
     }
