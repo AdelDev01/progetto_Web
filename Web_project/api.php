@@ -35,15 +35,50 @@ if(isset($input)){
     $set.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
   }
 }
+function bookTicket($eventID, $userID) {
+  global $link;
+
+  // Verifica se l'utente ha già prenotato per l'evento
+  $checkSql = "SELECT * FROM prenotazioni WHERE id_utente = $userID AND id_evento = $eventID";
+  $checkResult = mysqli_query($link, $checkSql);
+
+  if (mysqli_num_rows($checkResult) > 0) {
+      // L'utente ha già prenotato per questo evento
+      echo "Utente già prenotato per questo evento";
+  } else {
+      // Esegue l'inserimento nella tabella prenotazioni
+      $insertSql = "INSERT INTO prenotazioni (id_evento, id_utente) VALUES ($eventID, $userID)";
+      $insertResult = mysqli_query($link, $insertSql);
+
+      if ($insertResult) {
+          echo "Prenotazione effettuata con successo!";
+      } else {
+          echo "Errore durante la prenotazione";
+      }
+  }
+}
+
 
 // create SQL based on HTTP method
 switch ($method) {
-  case 'GET':
-    $sql = "select UID, username, email, data_creazione_acc from `$table`".($key?" WHERE username=\"$key\"":''); break;
-  case 'PUT':
-    $sql = "update `$table` set $set where email=\"$key\""; break;
+case 'GET':
+  $sql = "select UID, username, email, data_creazione_acc from `$table`".($key?" WHERE username=\"$key\"":''); break;
+case 'PUT':
+  $sql = "update `$table` set $set where email=\"$key\""; break;
   case 'POST':
-    $sql = "insert into `$table` set $set"; break;
+      if ($table == 'prenotazioni') {
+          $eventID = isset($input['eventID']) ? (int)$input['eventID'] : 0;
+          $userID = isset($input['userID']) ? (int)$input['userID'] : 0;
+
+          if ($eventID > 0 && $userID > 0) {
+              bookTicket($eventID, $userID);
+          } else {
+              echo "Parametri non validi per la prenotazione";
+          }
+      } else {
+          $sql = "insert into `$table` set $set";
+      }
+      break;
   case 'DELETE':
     $sql = "delete from `$table` where email=\"$key\""; break;
 }
