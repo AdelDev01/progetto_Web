@@ -4,11 +4,25 @@ session_start();
         header("location: ./homepage.php?error=alreadylogged");
         exit();
     }
-?>
+    
+    // Gestione errori php
+    if (isset($_GET['error'])) {
+        if($_GET['error'] == 'emptyinput'){
+            $errorMessage = 'Riempi tutti i campi!';
+        }
+        if($_GET['error'] == 'wronglogin'){
+            $errorMessage = 'Utente non esistente!';
+        }
+        if($_GET['error'] == 'incorrectpassword'){
+            $errorMessage = 'La mail o la password non è corretta!';
+        }
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="it">
     <head>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
@@ -19,10 +33,30 @@ session_start();
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
+        <script src="./errors.js"></script>
+
     </head>
     <body>
 
-        <?php require_once 'header.php'?>
+        <?php require_once 'header.php';
+        // Apri il popup se ci sono messaggi di errore
+        if (!empty($errorMessage)) : ?>
+            <script>
+                // funzione per aprire il popup con il messaggio di errore
+                function openDialog() {
+                    var myDialog = document.getElementById('myDialog');
+                    myDialog.showModal();
+                }
+
+                window.onload = openDialog; // il popup spunta quando la pagina è caricata
+            </script>
+        <?php endif; ?>
+
+        <!-- Contenuto del popup -->
+        <dialog id="myDialog">
+            <p><?php echo $errorMessage; ?></p>
+            <button onclick="closeDialog()">Chiudi</button>
+        </dialog>
         <div class="container-login">
             <div class="box">
                 <div id="div_login">
@@ -45,24 +79,7 @@ session_start();
                     <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
                 </div>
                 </form>
-                
-                <!-- Gestione errori php -->
-                
-                <div id="messaggi_errori_login">
-                <?php
-                    if (isset($_GET['error'])) {
-                        if($_GET['error'] == 'emptyinput'){
-                            echo '<p>Riempi tutti i campi!</p>';
-                        }
-                        if($_GET['error'] == 'wronglogin'){
-                            echo '<p>Utente non esistente!</p>';
-                        }
-                        if($_GET['error'] == 'incorrectpassword'){
-                            echo '<p>La mail o la password non è corretta!</p>';
-                        }
-                    }
-                ?>
-            </div>
+
         </div>
 
         <?php require_once 'footer.php'?>
