@@ -77,12 +77,18 @@ body {
 }
 
 .container{
-    position: relative;
+    display: flex;
+    flex-wrap: wrap; /* Permette il wrapping dei box quando non c'è spazio sufficiente */
+    justify-content: space-around; /* Allinea i box in modo uniforme sul container */
+    align-items: stretch; /* Fa sì che i box si estendano in altezza per riempire il container */
     max-width: 1200px;
-    height: 80vh;
     margin: 50px auto;
+}
+.box-container{
+    height: auto;
     background-color: rgba(255, 255, 255, 0.533);
     border-radius: 20px;
+
 }
 
 .container .box{

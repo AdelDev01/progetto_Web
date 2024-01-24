@@ -44,7 +44,7 @@ $eventData = getEventInfo($conn, $eventID);
                 var oReq = new XMLHttpRequest();
                 oReq.onload = function() {
                     document.getElementById("prenotazione").innerHTML = oReq.responseText;
-                    document.getElementById("prenotazione").style.marginLeft = "-60px";
+                    document.getElementById("prenotazione").style.marginLeft = "-40px";
                     
                 };
 

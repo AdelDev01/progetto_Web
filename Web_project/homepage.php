@@ -49,60 +49,25 @@ if (isset($_GET['error'])) {
 
     <div class="highlights-background">
         <section class="highlights">
-            <div class="highlight-images">
-                <a href=""><img src="img/image1.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image2.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image3.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image4.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image5.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image6.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image7.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image8.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image9.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image1.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image2.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image3.jpg" alt="" class="imag"></a>
-
-            </div>
-            <div class="highlight-images">
-                <a href=""><img src="img/image4.jpg" alt="" class="imag"></a>
-
-            </div>
-    </section>
-   </div>
+            <?php
+            $eventi = getEventInfoRandom($conn);
+            foreach ($eventi as $evento) : ?>
+                <div class="highlight-images">
+                    <a href="evento.php?eventID=<?php echo $evento['id_evento']; ?>">
+                        <div class="image">
+                            <img src="<?php echo $evento['url_foto']; ?>" alt="" class="imag">
+                        </div>
+                        <div class="title">
+                            <p class="event-name"><?php echo $evento['nome_evento']; ?></p>
+                        </div>
+                        <div class="datetime">
+                            <p><?php echo $evento['data_evento']; ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </section>
+    </div>
    <div class="divisor">
    </div>
    <div class="event-title-dashboard">
@@ -112,25 +77,33 @@ if (isset($_GET['error'])) {
    <!-- Ogni box equivale a un evento -->
 
    <div class="container">
-    
-        <?php //ottengo l'ordine degli eventi dal DB
-
-        $eventi = getEventInfoOrdered($conn, 'ASC');
-        foreach ($eventi as $evento) : ?>
-            <div class="box">
-                <a href="evento.php?eventID=<?php echo $evento['id_evento']; ?>">
-                    <div class="image">
-                        <img src="<?php echo $evento['url_foto']; ?>" alt="" class="imag">
-                    </div>
-                    <div class="title">
-                        <p class="event-name"><?php echo $evento['nome_evento']; ?></p>
-                    </div>
-                    <div class="datetime">
-                        <p><?php echo $evento['data_evento']; ?></p>
-                    </div>
-                </a>
-            </div>
-        <?php endforeach; ?>
+        <div class="box-container">
+            <?php
+            $eventi = getEventInfoOrdered($conn, 'ASC');
+            $counter = 0;  // Contatore per tracciare il numero di box visualizzati
+            foreach ($eventi as $evento) :
+                if ($counter >= 12) {
+                    break;
+                }
+            ?>
+                <div class="box">
+                    <a href="evento.php?eventID=<?php echo $evento['id_evento']; ?>">
+                        <div class="image">
+                            <img src="<?php echo $evento['url_foto']; ?>" alt="" class="imag">
+                        </div>
+                        <div class="title">
+                            <p class="event-name"><?php echo $evento['nome_evento']; ?></p>
+                        </div>
+                        <div class="datetime">
+                            <p><?php echo $evento['data_evento']; ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php
+                $counter++;
+            endforeach;
+            ?>
+        </div>
     </div>
 
     <?php require_once 'footer.php'; ?>

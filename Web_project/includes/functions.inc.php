@@ -213,3 +213,24 @@ function getEventInfoOrdered($conn, $order = 'ASC') {
         return array();
     }
 }
+
+function getEventInfoRandom($conn) {
+    try {
+        $sql = "SELECT * FROM evento ORDER BY RAND()";
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result) {
+            throw new Exception("Errore nella query: " . mysqli_error($conn));
+        }
+
+        $eventi = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $eventi[] = $row;
+        }
+
+        return $eventi;
+    } catch (Exception $e) {
+        echo "Errore: " . $e->getMessage();
+        return array();
+    }
+}
