@@ -41,7 +41,9 @@ function checkBooking($eventID, $userID) {
   global $link;
 
   // Verifica se l'utente ha già prenotato per l'evento
-  $checkSql = "SELECT * FROM prenotazioni WHERE id_utente_prenotato = $userID AND id_evento_prenotato = $eventID";
+  $checkSql = "SELECT * FROM prenotazioni 
+  WHERE id_utente_prenotato = $userID 
+  AND id_evento_prenotato = $eventID";
   $checkResult = mysqli_query($link, $checkSql);
 
   if (mysqli_num_rows($checkResult) > 0) {
@@ -70,7 +72,6 @@ switch ($method) {
               $sql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
 //return perché qualora l'utente dovesse essere già prenotato $sql sarebbe vuoto.
         }else return; 
-
     break;
   case 'DELETE':
     $sql = "delete from `$table` where id_prenotazione=\"$key\""; break;
