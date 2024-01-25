@@ -2,8 +2,19 @@
 include_once './header.php';
 require_once './connection.php';
 require_once './includes/functions.inc.php';
+
+if (!isset($_GET["eventID"]) || !is_numeric($_GET["eventID"])) {
+    // reindirizza l'utente all'home se nell'url non c'è un evento valido
+    header("location: ./homepage.php?error=eventdoesntexist");
+    exit();
+}
 $eventID = $_GET["eventID"];
 $eventData = getEventInfo($conn, $eventID);
+if(!($eventData !== null)) {
+    // reindirizza l'utente all'home se nell'url c'è un evento non esistente
+    header("location: ./homepage.php?error=eventdoesntexist");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +89,6 @@ $eventData = getEventInfo($conn, $eventID);
                 </div>
             </div>
         </div>
-    
     </body>
 </html>
 
