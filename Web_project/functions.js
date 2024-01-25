@@ -33,8 +33,8 @@ function eliminaPrenotazione(idPrenotazione) {
     // richiesta AJAX per eliminare la prenotazione
     var oReq = new XMLHttpRequest();
     oReq.onload = function() {
-        // Ricarica la pagina una volta eliminata la prenotazxione
-        location.reload();
+        //per riportare l'utente al proprio profilo col popup che segnala l'eliminazione avvenuta
+        window.location.href = 'profilo.php?error=bookelimination';
     };
 
     oReq.open("DELETE", "api.php/prenotazioni/" + idPrenotazione, true);

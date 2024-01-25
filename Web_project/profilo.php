@@ -9,6 +9,14 @@
     require_once 'connection.php';
     require_once './includes/functions.inc.php';
 
+    if (isset($_GET['error'])) {
+        $errorMessage = '';
+    
+        if ($_GET['error'] == 'bookelimination') {
+            $errorMessage = "Prenotazione eliminata con successo";
+        }
+    }
+
     // Query per ottenere le informazioni personali
     $user = getUserInfo($conn, $_SESSION['username']);
     $username = $user["username"];
@@ -39,7 +47,18 @@
     </head>
 
     <body>
-    <?php include_once './header.php'; ?>
+    <?php include_once './header.php'; 
+    // apre subito il popup se ci sono errori
+    if (!empty($errorMessage)) : ?>
+        <script> window.onload = openDialog; </script> 
+    <?php endif; ?>
+
+    <!-- Contenuto del popup -->
+    <dialog id="myDialog">
+        <p><?php echo $errorMessage; ?></p>
+        <button onclick="closeDialog()">Chiudi</button>
+    </dialog>
+    
         <div class="container-profilo">
             <div class="box">
                 <i class="fa-solid fa-id-card"></i>
