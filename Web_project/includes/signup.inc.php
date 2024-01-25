@@ -1,6 +1,6 @@
 <?php
 
-// IF per fare in modo che si possa accedere alla pagina solo tramite il pulsante in registration.php
+// IF per fare in modo che si possa accedere alla pagina solo tramite pulsante
 
 if(isset($_POST["submit"])){
     
@@ -8,9 +8,11 @@ if(isset($_POST["submit"])){
     $email = $_POST["email"];
     $pwd = $_POST["pwd"];
     $pwdrepeat = $_POST["pwdrepeat"];
-
+// connessione al db e scaricamento del file con le funzioni per effettuare il controllo errori
     require_once '../connection.php';
     require_once 'functions.inc.php';
+
+// diversi controlli per evitare che i campi siano invalidi (per un qualsiasi motivo)
 
     if (emptyInputSignup($username, $email, $pwd, $pwdrepeat) !== false) {
         header("location: ../signup.php?error=emptyinput");

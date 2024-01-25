@@ -1,6 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+    session_start(); //session start per fare in modo di mostrare diversi tasti 
 }
 ?>
 <!DOCTYPE html>
@@ -19,24 +19,23 @@ if (session_status() == PHP_SESSION_NONE) {
     <body>
 
         <div class="navigator">
-                <div class="logo">
-                    <a href="homepage.php" id="logo">Booket</a>
-                </div>
-                <div id="nav_btns">
-                 <ul>
-                 <?php
-                    if (isset($_SESSION['username'])){
-                        echo '<li><a class="link_nav-bar" href="./profilo.php" >PROFILO</a></li>';
-                        echo '<li><a class="link_nav-bar" href="./includes/logout.inc.php">LOGOUT</a></li>';
-                    }
-                    else{
-                        echo '<li><a class="link_nav-bar" href="./login.php"><i class="fa-solid fa-right-to-bracket"></i>  LOGIN</a></li>';
-                        echo '<li><a class="link_nav-bar" href="./signup.php"><i class="fa-solid fa-user-plus"></i>  REGISTRAZIONE</a></li>';
-                    }
-                ?>
-                 </ul>
-                </div>
+            <div class="logo">
+                <a href="homepage.php" id="logo">Booket</a>
             </div>
-
+            <div id="nav_btns">
+             <ul>
+             <?php
+                if (isset($_SESSION['username'])){
+                    echo '<li><a class="link_nav-bar" href="./profilo.php" >PROFILO</a></li>';
+                    echo '<li><a class="link_nav-bar" href="./includes/logout.inc.php">LOGOUT</a></li>';
+                }
+                else{
+                    echo '<li><a class="link_nav-bar" href="./login.php"><i class="fa-solid fa-right-to-bracket"></i>  LOGIN</a></li>';
+                    echo '<li><a class="link_nav-bar" href="./signup.php"><i class="fa-solid fa-user-plus"></i>  REGISTRAZIONE</a></li>';
+                }
+            ?>
+             </ul>
+            </div>
+        </div>
     </body>
 </html>

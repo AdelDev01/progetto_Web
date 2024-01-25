@@ -105,8 +105,8 @@ function emptyInputCheck($firstField, $secondField){
 // Funzione per fare il login
 function loginUser($conn, $username, $pwd){
     $userExists = usernameExists($conn, $username, $username);
-    // Se includi $username come terzo parametro, verrà effettuato un controllo nel database sia sulla mail che sull'username.
-    // Questo ti consente di effettuare l'accesso utilizzando uno o l'altro.
+// includendo $username come terzo parametro, verrà effettuato un controllo nel database sia sulla email che sull'username.
+// Questo consente di effettuare l'accesso utilizzando o uno o l'altro.
     if ($userExists === false){
         header("location: ../login.php?error=wronglogin");
         exit();
@@ -128,32 +128,12 @@ function loginUser($conn, $username, $pwd){
     }
 }
 
-function reLoginUser($conn, $username, $pwd){
-    $userExists = usernameExists($conn, $username, $username);
-    if ($userExists === false){
-        header("location: ../login.php?error=wronglogin");
-        exit();
-    }
 
-    $pwdHashed = $userExists['password'];
-    
-    if ($pwdHashed === $pwd){
-        session_start();
-        $_SESSION["uid"] = $userExists["uid"];
-        $_SESSION["username"] = $userExists["username"];
-        header("location: ../img/impostazioni.php?error=none");
-        exit(); 
-    }
-    else{
-        header("location: ../login.php?error=incorrectpassword");
-        exit();
-    }
-}
 
 // Funzioni per ottenere le informazioni riguardanti l'utente e l'evento dal database
 
 function getUserInfo($conn, $username) {
-    // Esegue la query per ottenere le informazioni del campo dal database
+// query per ottenere le informazioni dell'utente dal database
     $sql = "SELECT UID, username, password, email, data_creazione_acc FROM utenti WHERE username = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
@@ -172,6 +152,7 @@ function getUserInfo($conn, $username) {
 }
 
 function getEventInfo($conn, int $eventID) {
+// query per ottenere le informazioni dell'evento dal database
     $sql = "SELECT id_evento, nome_evento, data_evento, info_evento, prenotazioni_totali, url_foto FROM evento WHERE id_evento = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
@@ -189,6 +170,7 @@ function getEventInfo($conn, int $eventID) {
 }
 
 function getUserBookings($conn, int $uid) {
+// query per ottenere le informazioni sulle prenotazioni di un utente a partire dal suo UID
     $sql = "SELECT id_evento_prenotato, id_prenotazione FROM prenotazioni WHERE id_utente_prenotato = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
@@ -207,10 +189,10 @@ function getUserBookings($conn, int $uid) {
 
 function getEventInfoOrdered($conn, $order = 'ASC') {
     try {
-        // Recupero la data attuale per evitare di dare eventi passati
+// recupero della data attuale (per evitare di dare eventi passati)
         $currentDate = date('Y-m-d H:i:s');
 
-        // Viene eseguita la query per ottenere gli eventi ordinati per data senza prendere quelli passati
+// query per ottenere gli eventi ordinati per data senza prendere quelli passati
 
         $sql = "SELECT * FROM evento WHERE data_evento > '$currentDate' ORDER BY data_evento $order";
         $result = mysqli_query($conn, $sql);
@@ -223,14 +205,14 @@ function getEventInfoOrdered($conn, $order = 'ASC') {
         while ($row = mysqli_fetch_assoc($result)) {
             $eventi[] = $row;
         }
-
+// il risultato viene ritornato come array di eventi
         return $eventi;
     } catch (Exception $e) {
         echo "Errore: " . $e->getMessage();
         return array();
     }
 }
-
+//query per ottenere un array di eventi in ordine random (quelli che spuntano nella barra a scorrimento)
 function getEventInfoRandom($conn) {
     try {
         $sql = "SELECT * FROM evento ORDER BY RAND()";

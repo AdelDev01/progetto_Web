@@ -1,18 +1,25 @@
 <?php 
+//connessione al db e scaricamento delle funzioni per poter successivamente scaricare gli eventi presenti nel db
 require_once './connection.php'; 
 require_once './includes/functions.inc.php';
-
+//gestione di eventuali messaggi di errore
 if (isset($_GET['error'])) {
     $errorMessage = '';
-
+//nel caso in cui si tenti di accedere a qualche pagina senza aver fatto l'accesso (ad esempio profilo.php necessita un account loggato)
     if ($_GET['error'] == 'notlogged') {
         $errorMessage = "Non hai effettuato l'accesso!";
     }
+//nel caso in cui si tenti di andare su login.php manualmente quando si è già loggati
     if ($_GET['error'] == 'alreadylogged') {
         $errorMessage = "Hai già effettuato l'accesso!";
     }
+//quando si effettua la registrazione
     if ($_GET['error'] == 'signupsuccess') {
         $errorMessage = 'Registrazione effettuata con successo!';
+    }
+//quando si prova ad accedere manualmente a un evento inesistente/eliminato
+    if ($_GET['error'] == 'eventdoesntexist') {
+        $errorMessage = 'Questo evento non esiste!';
     }
 }
 
@@ -36,17 +43,17 @@ if (isset($_GET['error'])) {
 <body>
     <?php require_once 'header.php';
 
-    // apre subito il popup se ci sono errori
+// apre subito il popup se ci sono errori
     if (!empty($errorMessage)) : ?>
         <script> window.onload = openDialog; </script> 
     <?php endif; ?>
 
-    <!-- Contenuto del popup -->
+<!-- Contenuto del popup -->
     <dialog id="myDialog">
         <p><?php echo $errorMessage; ?></p>
         <button onclick="closeDialog()">Chiudi</button>
     </dialog>
-
+<!-- Barra a scorrimento che scarica gli eventi in modo random -->
     <div class="highlights-background">
         <section class="highlights">
             <?php
@@ -68,19 +75,20 @@ if (isset($_GET['error'])) {
             <?php endforeach; ?>
         </section>
     </div>
-   <div class="divisor">
-   </div>
+
+   <div class="divisor"></div>
+
+
    <div class="event-title-dashboard">
         <p>DI TENDENZA IN QUESTO MOMENTO</p>
    </div>
-
-   <!-- Ogni box equivale a un evento -->
-
+<!-- Ogni box equivale a un evento -->
    <div class="container">
         <div class="box-container">
             <?php
             $eventi = getEventInfoOrdered($conn, 'ASC');
-            $counter = 0;  // Contatore per tracciare il numero di box visualizzati
+// Contatore per tracciare il numero di box visualizzati (impostiamo il limite a 12)
+            $counter = 0;  
             foreach ($eventi as $evento) :
                 if ($counter >= 12) {
                     break;

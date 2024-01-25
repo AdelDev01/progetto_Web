@@ -17,14 +17,14 @@
         }
     }
 
-    // Query per ottenere le informazioni personali
+// Query per ottenere le informazioni personali
     $user = getUserInfo($conn, $_SESSION['username']);
     $username = $user["username"];
     $email = $user["email"];
     $data_creaz = $user["data_creazione_acc"];
     $uid = $user["UID"];
 
-    //query per ottenere gli eventi a cui si è prenotati
+//query per ottenere gli eventi a cui si è prenotati
     $bookedEvents = getUserBookings($conn, $uid);
 
 
@@ -49,12 +49,12 @@
 
     <body>
     <?php include_once './header.php'; 
-    // apre subito il popup se ci sono errori
+// apre subito il popup se ci sono errori
     if (!empty($errorMessage)) : ?>
         <script> window.onload = openDialog; </script> 
     <?php endif; ?>
 
-    <!-- Contenuto del popup -->
+<!-- Contenuto del popup -->
     <dialog id="myDialog">
         <p><?php echo $errorMessage; ?></p>
         <button onclick="closeDialog()">Chiudi</button>
@@ -82,10 +82,10 @@
             <div class="container">
 
                 <?php
-                // Verifica se ci sono eventi prenotati
+// Verifica se ci sono eventi prenotati
                 if (!empty($bookedEvents)) :
                     foreach ($bookedEvents as $booking) :
-                        // Chiamata alla funzione per ottenere informazioni sull'evento
+// Chiamata alla funzione per ottenere informazioni sull'evento
                         $eventInfo = getEventInfo($conn, $booking['id_evento_prenotato']);
                 ?>
                         <div class="box-container">
@@ -107,7 +107,7 @@
                 <?php
                     endforeach;
                 else :
-                    // Nessun evento prenotato, mostra un messaggio
+// Nessun evento prenotato, mostra un messaggio
                     echo '<div id="no-event">Nessun evento prenotato.</div>';
                 endif;
                 ?>

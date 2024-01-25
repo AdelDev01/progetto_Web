@@ -1,3 +1,5 @@
+<!-- api.php per gestire le chiamate asincrone RESTful -->
+
 <?php
 
 // get the HTTP method, path and body of the request
@@ -43,7 +45,7 @@ function checkBooking($eventID, $userID) {
   $checkResult = mysqli_query($link, $checkSql);
 
   if (mysqli_num_rows($checkResult) > 0) {
-      // L'utente ha già prenotato per questo evento
+// L'utente ha già prenotato per questo evento
       echo "Utente già prenotato per questo evento";
       return true;
   } else {
@@ -55,18 +57,19 @@ function checkBooking($eventID, $userID) {
 // create SQL based on HTTP method
 switch ($method) {
   case 'GET':
-    $sql = "select UID, username, email, data_creazione_acc from `$table`".($key?" WHERE username=\"$key\"":''); break;
+//non lo usiamo
   case 'PUT':
-    $sql = "update `$table` set $set where email=\"$key\""; break;
+//non lo usiamo
   case 'POST':
-  //casting di eventID e UID nel caso in cui non siano vuoti (quindi il passaggio è avvenuto correttamente)
+//casting di eventID e UID nel caso in cui non siano vuoti (quindi il passaggio è avvenuto correttamente)
         $eventID = isset($input['eventID']) ? (int)$input['eventID'] : 0;
         $userID = isset($input['userID']) ? (int)$input['userID'] : 0;
         if ($eventID > 0 && $userID > 0 && !checkBooking($eventID, $userID)) {
-            //il passaggio è avvenuto correttamente e l'utente non è già prenotato per quell'evento
-            //quidni si esegue l'inserimento nella tabella prenotazioni
+//il passaggio è avvenuto correttamente e l'utente non è già prenotato per quell'evento
+//quidni si esegue l'inserimento nella tabella prenotazioni
               $sql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
-        }else return; //return perché qualora l'utente dovesse essere già prenotato $sql sarebbe vuoto.
+//return perché qualora l'utente dovesse essere già prenotato $sql sarebbe vuoto.
+        }else return; 
 
     break;
   case 'DELETE':
@@ -84,17 +87,11 @@ if (!$result) {
 }
 
 // print results, insert id or affected row count
-if ($method == 'GET') {
-  if (!$key) echo '[';
-  for ($i=0;$i<mysqli_num_rows($result);$i++) {
-    echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
-  }
-  if (!$key) echo ']';
-} elseif ($method == 'POST' && $table == 'prenotazioni') {
+if ($method == 'POST' && $table == 'prenotazioni') {
   echo "Prenotazione effettuata con successo!";
 }
-elseif ($method == 'POST') {
-    echo "INSERT OK";
+elseif ($method == 'DELETE') {
+    echo "Eliminazione avvenuta con successo";
 } else {
   echo "AFFECTED ROWS: " . mysqli_affected_rows($link);
 }

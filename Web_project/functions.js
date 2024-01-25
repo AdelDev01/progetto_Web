@@ -9,10 +9,10 @@ function closeDialog() {
     var myDialog = document.getElementById('myDialog');
     myDialog.close();
 }
-
+// funzione per mandare in formato json i dati per la prenotazione
 function bookTicket(eventID, userID) {
     var oReq = new XMLHttpRequest();
-    oReq.onload = function() {
+    oReq.onload = function() { //cambio del contenuto del pulsante per prenotarsi
         document.getElementById("prenotazione").innerHTML = oReq.responseText;
     };
 
@@ -29,7 +29,6 @@ function bookTicket(eventID, userID) {
 }
 
 function eliminaPrenotazione(idPrenotazione) {
-    console.log("BALOTELLI")
     // richiesta AJAX per eliminare la prenotazione
     var oReq = new XMLHttpRequest();
     oReq.onload = function() {

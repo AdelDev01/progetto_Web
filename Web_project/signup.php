@@ -4,7 +4,7 @@
         header("location: ./homepage.php?error=alreadylogged");
         exit();
     }
-    // Gestione errori nella registrazione
+// Gestione errori nella registrazione
     if (isset($_GET['error'])) {
         if($_GET['error'] == 'emptyinput'){
             $errorMessage = 'Riempi tutti i campi!';
@@ -47,16 +47,17 @@
 
     <body>
     <?php require_once 'header.php';
-        // apre subito il popup se ci sono errori
+// apre subito il popup se ci sono errori
         if (!empty($errorMessage)) : ?>
             <script> window.onload = openDialog; </script> 
         <?php endif; ?>
 
-        <!-- Contenuto del popup -->
+<!-- Contenuto del popup -->
         <dialog id="myDialog">
             <p><?php echo $errorMessage; ?></p>
             <button onclick="closeDialog()">Chiudi</button>
         </dialog>
+<!-- div del signup -->
         <div class="container-sign-up">
             <div class="box">
                 <div id="div_registrazione">
@@ -64,21 +65,21 @@
                     <h1 id="titolo_registrazione">REGISTRAZIONE</h1>
                 </div>
 
-                    <form action="./includes/signup.inc.php" method="post">
-                        <div id="form_registrazione">
-                            <input type="email" name="email" placeholder="Inserisci la tua email"></input>
-                            <br><br>
-                            <input type="text" name="username" placeholder="Inserisci il tuo username"></input>
-                            <br><br>
-                            <input type="password" name="pwd" placeholder="Inserisci la tua password"> </input>
-                            <br><br>
-                            <input type="password" name="pwdrepeat" placeholder="Ripeti la tua password"> </input>
-                            <br><br>
-                            <button type="submit" name="submit">Registrati</button>
-                        </div>
-                    </form>
+                <form action="./includes/signup.inc.php" method="post">
+                    <div id="form_registrazione">
+                        <input type="email" name="email" placeholder="Inserisci la tua email"></input>
+                        <br><br>
+                        <input type="text" name="username" placeholder="Inserisci il tuo username"></input>
+                        <br><br>
+                        <input type="password" name="pwd" placeholder="Inserisci la tua password"> </input>
+                        <br><br>
+                        <input type="password" name="pwdrepeat" placeholder="Ripeti la tua password"> </input>
+                        <br><br>
+                        <button type="submit" name="submit">Registrati</button>
+                    </div>
+                </form>
             </div>
-
+        </div>
         <?php require_once 'footer.php'?>
 
     </body>

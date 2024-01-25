@@ -1,11 +1,12 @@
 <?php
 session_start();
     if (isset($_SESSION['username'])){
+// impossibile fare il login se si è già loggati
         header("location: ./homepage.php?error=alreadylogged");
         exit();
     }
     
-    // Gestione errori php
+// Gestione errori php
     if (isset($_GET['error'])) {
         if($_GET['error'] == 'emptyinput'){
             $errorMessage = 'Riempi tutti i campi!';
@@ -40,16 +41,18 @@ session_start();
     </head>
     <body>
 
-        <?php require_once 'header.php';// apre subito il popup se ci sono errori
+        <?php require_once 'header.php';
+// apre subito il popup se ci sono errori
         if(!empty($errorMessage)) : ?>
             <script> window.onload = openDialog; </script> 
         <?php endif; ?>
 
-        <!-- Contenuto del popup -->
+<!-- Contenuto del popup -->
         <dialog id="myDialog">
             <p><?php echo $errorMessage; ?></p>
             <button onclick="closeDialog()">Chiudi</button>
         </dialog>
+<!-- div del login -->
         <div class="container-login">
             <div class="box">
                 <div id="div_login">
@@ -57,7 +60,7 @@ session_start();
                     <h1 id="titolo_login">LOGIN</h1>
                 </div>
             
-
+<!-- form login -->
                 <form action="includes/login.inc.php" method="post">
                     <div id="form_login">
                         <input type="text" name="username" placeholder="Inserisci username o email">
@@ -66,14 +69,14 @@ session_start();
                         <br><br>
                         <button type="submit" name="submit">Accedi</button>
                     </div>
-
+<!-- reindirizzamento registrazione -->
                     <div id="registrati_ora">
                         <p style='display: inline'>Non sei ancora registrato?</p>
                         <a href="./signup.php" id="pulsante-registrazione">Registrati ora</a>
                     </div>
                 </form>
             </div>
-
+        </div>
         <?php require_once 'footer.php'?>
 
     </body>
