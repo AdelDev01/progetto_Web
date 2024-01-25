@@ -14,6 +14,7 @@ function bookTicket(eventID, userID) {
     var oReq = new XMLHttpRequest();
     oReq.onload = function() { //cambio del contenuto del pulsante per prenotarsi
         document.getElementById("prenotazione").innerHTML = oReq.responseText;
+        document.getElementById("prenotazione").style.marginLeft = "-40px";
     };
 
     oReq.open("POST", "api.php/prenotazioni/", true);
