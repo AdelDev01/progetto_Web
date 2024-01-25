@@ -87,7 +87,7 @@ if (!$result) {
 }
 
 // print results, insert id or affected row count
-if ($method == 'POST' && $table == 'prenotazioni') {
+if ($method == 'POST') {
   echo "Prenotazione effettuata con successo!";
 }
 elseif ($method == 'DELETE') {
