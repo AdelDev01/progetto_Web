@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
         <div class="navigator">
                 <div class="logo">
-                    <a href="homepage.php" id="logo">TicketSell</a>
+                    <a href="homepage.php" id="logo">Booket</a>
                 </div>
                 <div id="nav_btns">
                  <ul>
