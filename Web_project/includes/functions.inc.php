@@ -153,7 +153,7 @@ function getUserInfo($conn, $username) {
 
 function getEventInfo($conn, int $eventID) {
 // query per ottenere le informazioni dell'evento dal database
-    $sql = "SELECT id_evento, nome_evento, data_evento, info_evento, prenotazioni_totali, url_foto FROM evento WHERE id_evento = ?";
+    $sql = "SELECT id_evento, nome_evento, data_evento, info_evento, url_foto FROM evento WHERE id_evento = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../homepage.php?error=stmtfailed");
