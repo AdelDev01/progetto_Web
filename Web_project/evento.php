@@ -42,6 +42,11 @@ $eventData = getEventInfo($conn, $eventID);
 
         <div class="container-evento">
             <div class="box-evento">
+                <div class="box-messaggio">
+                    <form action="./homepage.php">
+                            <button class="bottone-ritorno">Torna indietro</button>
+                    </form>
+                </div>
                 <div id="locandina_evento">
                     <div class="image-container">
                         <img src="<?php echo $eventData["url_foto"]?>">

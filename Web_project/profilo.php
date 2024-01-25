@@ -13,7 +13,7 @@
         $errorMessage = '';
     
         if ($_GET['error'] == 'bookelimination') {
-            $errorMessage = "Prenotazione eliminata con successo";
+            $errorMessage = "Prenotazione eliminata con successo!";
         }
     }
 
@@ -42,6 +42,7 @@
         <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,500&display=swap" rel="stylesheet">
 
         <script src="./functions.js"></script>
     </head>
@@ -77,7 +78,7 @@
             </div>
         </div>
         <div class="eventi_utente">
-            <h1 class="event-title-dashboard">I tuoi eventi</h1>
+            <h1 class="event-title-dashboard">I TUOI EVENTI</h1>
             <div class="container">
 
                 <?php
@@ -101,13 +102,13 @@
                                     </div>
                                 </a>
                             </div>
-                            <button class="elimina-prenotazione" onclick="eliminaPrenotazione(<?php echo $booking['id_prenotazione']; ?>)">Elimina prenotazione</button>
+                            <button class="elimina-prenotazione" onclick="eliminaPrenotazione(<?php echo $booking['id_prenotazione']; ?>)"><i class="fa-regular fa-x"></i></button>
                         </div>
                 <?php
                     endforeach;
                 else :
                     // Nessun evento prenotato, mostra un messaggio
-                    echo '<div>Nessun evento prenotato.</div>';
+                    echo '<div id="no-event">Nessun evento prenotato.</div>';
                 endif;
                 ?>
             </div>

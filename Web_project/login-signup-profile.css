@@ -99,3 +99,63 @@ button[type=submit]:hover{
     background-color: #a9a9a9;
     color: #f0f0f0;
 }
+
+.box-container{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.elimina-prenotazione{
+    margin: 10px;
+    padding: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-radius: 70%;
+    font-size: 15px;
+    background-color: red;
+    color: rgb(235, 235, 235);
+    font-weight: bold;
+    border: 1px solid rgb(136, 136, 136);
+    transition: 0.3s;
+}
+
+.elimina-prenotazione:hover{
+    background-color: rgb(214, 0, 0);
+    color: rgb(224, 224, 224);
+
+}
+
+.elimina-prenotazione:active {
+    background-color: #a40000;
+    box-shadow: 0 3px #404040;
+    transform: translateY(3px);
+}
+
+.event-title-dashboard{
+    font-family: 'Kufam', sans-serif;
+}
+
+#myDialog{
+    padding: 50px;
+    border: 1px solid rgb(38, 38, 38);
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#myDialog button{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+}
+
+#myDialog button:hover{
+    padding: 10px;
+    background-color: #c0c0c0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#no-event{
+    font-family: 'Montserrat', sans-serif;
+}
