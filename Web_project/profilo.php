@@ -34,6 +34,8 @@
         <script src="https://kit.fontawesome.com/073667f4ba.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+        <script src="./functions.js"></script>
     </head>
 
     <body>
@@ -58,37 +60,40 @@
         <div class="eventi_utente">
             <h1 class="event-title-dashboard">I tuoi eventi</h1>
             <div class="container">
-                <div class="box-container">
-                    <?php
-                    // Verifica se ci sono eventi prenotati
-                    if (!empty($bookedEvents)) {
-                        foreach ($bookedEvents as $booking) {
-                            // Chiamata alla funzione per ottenere informazioni sull'evento
-                            $eventInfo = getEventInfo($conn, $booking['id_evento_prenotato']);
-                            
-                            echo '<div class="box">';
-                                echo "<a href='evento.php?eventID=" . $eventInfo['id_evento'] . "'>";
-                                    echo '<div class="image">';
-                                        echo '<img src="' . $eventInfo['url_foto'] . '" alt="" class="imag">';
-                                    echo '</div>';
-                                    echo '<div class="title">';
-                                        echo '<p class="event-name">' . $eventInfo['nome_evento'] . '</p>';
-                                    echo '</div>';
-                                    echo '<div class="datetime">';
-                                        echo '<p>' . $eventInfo['data_evento'] . '</p>';
-                                    echo '</div>';
-                                echo '</a>';
-                            echo '</div>';
 
-                        }
-                    } else {
-                        // Nessun evento prenotato, mostra un messaggio
-                        echo '<div>Nessun evento prenotato.</div>';
-                    }
-                    ?>
-                </div>
+                <?php
+                // Verifica se ci sono eventi prenotati
+                if (!empty($bookedEvents)) :
+                    foreach ($bookedEvents as $booking) :
+                        // Chiamata alla funzione per ottenere informazioni sull'evento
+                        $eventInfo = getEventInfo($conn, $booking['id_evento_prenotato']);
+                ?>
+                        <div class="box-container">
+                            <div class="box">
+                                <a href='evento.php?eventID=<?php echo $eventInfo['id_evento']; ?>'>
+                                    <div class="image">
+                                        <img src="<?php echo $eventInfo['url_foto']; ?>" alt="" class="imag">
+                                    </div>
+                                    <div class="title">
+                                        <p class="event-name"><?php echo $eventInfo['nome_evento']; ?></p>
+                                    </div>
+                                    <div class="datetime">
+                                        <p><?php echo $eventInfo['data_evento']; ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <button class="elimina-prenotazione" onclick="eliminaPrenotazione(<?php echo $booking['id_prenotazione']; ?>)">Elimina prenotazione</button>
+                        </div>
+                <?php
+                    endforeach;
+                else :
+                    // Nessun evento prenotato, mostra un messaggio
+                    echo '<div>Nessun evento prenotato.</div>';
+                endif;
+                ?>
             </div>
         </div>
+
 
 
     <?php include_once './footer.php'; ?>

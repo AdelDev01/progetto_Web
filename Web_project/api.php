@@ -59,7 +59,7 @@ switch ($method) {
   case 'PUT':
     $sql = "update `$table` set $set where email=\"$key\""; break;
   case 'POST':
-    if ($table == 'prenotazioni') { //casting di eventID e UID nel caso in cui non siano vuoti (quindi il passaggio è avvenuto correttamente)
+  //casting di eventID e UID nel caso in cui non siano vuoti (quindi il passaggio è avvenuto correttamente)
         $eventID = isset($input['eventID']) ? (int)$input['eventID'] : 0;
         $userID = isset($input['userID']) ? (int)$input['userID'] : 0;
         if ($eventID > 0 && $userID > 0 && !checkBooking($eventID, $userID)) {
@@ -67,12 +67,10 @@ switch ($method) {
             //quidni si esegue l'inserimento nella tabella prenotazioni
               $sql = "INSERT INTO prenotazioni (id_evento_prenotato, id_utente_prenotato) VALUES ($eventID, $userID)";
         }else return; //return perché qualora l'utente dovesse essere già prenotato $sql sarebbe vuoto.
-    } else {
-        $sql = "insert into `$table` set $set";
-    }
+
     break;
   case 'DELETE':
-    $sql = "delete from `$table` where email=\"$key\""; break;
+    $sql = "delete from `$table` where id_prenotazione=\"$key\""; break;
 }
 
 // excecute SQL statement

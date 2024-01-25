@@ -27,3 +27,16 @@ function bookTicket(eventID, userID) {
     var jsondata = JSON.stringify(data);
     oReq.send(jsondata);
 }
+
+function eliminaPrenotazione(idPrenotazione) {
+    console.log("BALOTELLI")
+    // richiesta AJAX per eliminare la prenotazione
+    var oReq = new XMLHttpRequest();
+    oReq.onload = function() {
+        // Ricarica la pagina una volta eliminata la prenotazxione
+        location.reload();
+    };
+
+    oReq.open("DELETE", "api.php/prenotazioni/" + idPrenotazione, true);
+    oReq.send();
+}
