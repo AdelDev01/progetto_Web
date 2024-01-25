@@ -21,30 +21,18 @@ $eventData = getEventInfo($conn, $eventID);
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <script src="./functions.js"></script>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
         <script>
             window.onload = function(){
                 document.getElementById('prenotazione').addEventListener("click", function() {
                     var eventID = <?php echo $eventID; ?>;
-                    var userID = <?php echo $_SESSION["UID"]; ?>;                    
-
+                    var userID = <?php echo $_SESSION["UID"]; ?>;
                     bookTicket(eventID, userID);
-                    
-                    if (this.innerHTML === 'Prenotati per l\'evento') {
-                        this.innerHTML = 'Prenotazione effettuata!';
-                        
-                    }
-                    else
-                    {
-                        this.innerHTML = 'Prenotati per l\'evento';
-                    }
                 });
             }
             
         </script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 
     </head>
 
